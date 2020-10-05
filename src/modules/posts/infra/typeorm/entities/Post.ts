@@ -22,15 +22,15 @@ class Post {
   @Column()
   content: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { eager: true })
   @JoinColumn({ name: 'author_id' })
   user: User;
 
   @Column()
   author_id: string;
 
-  @ManyToOne(() => Tag)
-  @JoinColumn({ name: 'tag' })
+  @ManyToOne(() => Tag, { eager: true })
+  @JoinColumn({ name: 'tag_id' })
   tag: Tag;
 
   @Column()
