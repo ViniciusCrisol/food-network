@@ -20,4 +20,6 @@ postsRouter.post(
   postsController.create,
 );
 
+postsRouter.put('/:id', postsController.update);
+
 export default postsRouter;

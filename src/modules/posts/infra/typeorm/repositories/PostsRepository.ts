@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Like, Repository } from 'typeorm';
 
 import ICreatePostDTO from '@modules/posts/dtos/ICreatePostDTO';
 import IFindPostByTitleAndTagDTO from '@modules/posts/dtos/IFindPostByTitleAndTagDTO';
@@ -34,7 +34,15 @@ class PostsRepository implements IPostsRepository {
   }
 
   public async findByTitle(title: string): Promise<Post | undefined> {
-    const post = await this.ormRepository.findOne({ where: { title } });
+    const post = await this.ormRepository.findOne({
+      where: { title: Like(`%${title}%`) },
+    });
+
+    return post;
+  }
+
+  public async findById(id: string): Promise<Post | undefined> {
+    const post = await this.ormRepository.findOne(id);
 
     return post;
   }

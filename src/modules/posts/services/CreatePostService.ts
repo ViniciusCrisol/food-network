@@ -16,7 +16,7 @@ interface IRequest {
 }
 
 @injectable()
-class AuthenticateUserService {
+class CreatePostService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -61,4 +61,4 @@ class AuthenticateUserService {
   }
 }
 
-export default AuthenticateUserService;
+export default CreatePostService;
