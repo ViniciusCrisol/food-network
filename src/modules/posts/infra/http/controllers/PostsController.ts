@@ -11,9 +11,9 @@ export default class PostsController {
 
     const createPost = container.resolve(CreatePostService);
 
-    const post = await createPost.execute({ content, tag, title, user_id });
+    const { id } = await createPost.execute({ content, tag, title, user_id });
 
-    return response.json(post);
+    return response.json({ id, title, tag, content });
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
