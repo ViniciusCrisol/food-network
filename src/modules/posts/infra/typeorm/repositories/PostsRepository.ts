@@ -47,14 +47,6 @@ class PostsRepository implements IPostsRepository {
     await this.ormRepository.remove(post);
   }
 
-  public async findByTitle(title: string): Promise<Post | undefined> {
-    const post = await this.ormRepository.findOne({
-      where: { title: Like(`%${title}%`) },
-    });
-
-    return post;
-  }
-
   public async findById(id: string): Promise<Post | undefined> {
     const post = await this.ormRepository.findOne(id);
 

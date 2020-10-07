@@ -47,12 +47,6 @@ class FakePostsRepository implements IPostsRepository {
     return foundedPost;
   }
 
-  public async findByTitle(title: string): Promise<Post | undefined> {
-    const foundedPost = this.posts.find(post => post.title === title);
-
-    return foundedPost;
-  }
-
   public async findById(id: string): Promise<Post | undefined> {
     const foundedPost = this.posts.find(post => post.id === id);
 

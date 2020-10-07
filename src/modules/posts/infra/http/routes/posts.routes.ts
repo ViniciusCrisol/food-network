@@ -3,11 +3,11 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import PostsController from '../controllers/PostsController';
-import SearchPostsController from '../controllers/SearchPostsController';
+import SearchPostsByTitleController from '../controllers/SearchPostsByTitleController';
 
 const postsRouter = Router();
 const postsController = new PostsController();
-const searchPostsController = new SearchPostsController();
+const searchPostsByTitleController = new SearchPostsByTitleController();
 
 postsRouter.post(
   '/',
@@ -28,6 +28,6 @@ postsRouter.put('/:id', ensureAuthenticated, postsController.update);
 
 postsRouter.delete('/:id', postsController.delete);
 
-postsRouter.get('/search/:title', searchPostsController.title);
+postsRouter.get('/search/:title', searchPostsByTitleController.index);
 
 export default postsRouter;
