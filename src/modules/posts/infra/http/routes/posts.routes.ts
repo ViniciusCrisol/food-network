@@ -26,6 +26,8 @@ postsRouter.get('/', postsController.index);
 
 postsRouter.put('/:id', ensureAuthenticated, postsController.update);
 
+postsRouter.delete('/:id', postsController.delete);
+
 postsRouter.get('/search/:title', searchPostsController.title);
 
 export default postsRouter;

@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreatePostService from '@modules/posts/services/CreatePostService';
 import ListPostsServices from '@modules/posts/services/ListPostsServices';
 import EditPostService from '@modules/posts/services/EditPostService';
+import DeletePostService from '@modules/posts/services/DeletePostService';
 
 export default class PostsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -38,30 +39,35 @@ export default class PostsController {
     return response.json(serializedPosts);
   }
 
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deletePost = container.resolve(DeletePostService);
+
+    await deletePost.execute(id);
+
+    return response.status(204).json();
+  }
+
   public async update(request: Request, response: Response): Promise<Response> {
     const { content, tag, title } = request.body;
     const post_id = request.params.id;
 
     const editPostService = container.resolve(EditPostService);
 
-    const {
-      id,
-      author,
-      title: postTitle,
-      content: postContent,
-    } = await editPostService.execute({
+    const { id, author } = await editPostService.execute({
       tag,
       title,
-      content,
       post_id,
+      content,
     });
 
     return response.json({
       id,
       tag,
-      title: postTitle,
+      title,
       author: author.name,
-      content: postContent,
+      content,
     });
   }
 }
