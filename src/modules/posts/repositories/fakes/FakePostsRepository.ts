@@ -25,6 +25,10 @@ class FakePostsRepository implements IPostsRepository {
     this.posts = posts;
   }
 
+  public async list(): Promise<Post[]> {
+    return this.posts;
+  }
+
   public async save(data: Post): Promise<Post> {
     const updatedPosts = this.posts.map(post => {
       if (post.id === data.id) return data;
@@ -35,6 +39,12 @@ class FakePostsRepository implements IPostsRepository {
     this.posts = updatedPosts;
 
     return data;
+  }
+
+  public async searchPostsByTitle(title: string): Promise<Post[]> {
+    const foundedPost = this.posts.filter(post => post.title === title);
+
+    return foundedPost;
   }
 
   public async findByTitle(title: string): Promise<Post | undefined> {

@@ -25,6 +25,20 @@ class PostsRepository implements IPostsRepository {
     return this.ormRepository.save(post);
   }
 
+  public async list(): Promise<Post[]> {
+    const posts = await this.ormRepository.find();
+
+    return posts;
+  }
+
+  public async searchPostsByTitle(title: string): Promise<Post[]> {
+    const posts = await this.ormRepository.find({
+      where: { title: Like(`%${title}%`) },
+    });
+
+    return posts;
+  }
+
   public async delete(id: string): Promise<void> {
     const post = await this.ormRepository.findOne(id);
 

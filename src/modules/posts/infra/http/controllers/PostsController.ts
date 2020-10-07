@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreatePostService from '@modules/posts/services/CreatePostService';
+import ListPostsServices from '@modules/posts/services/ListPostsServices';
 import EditPostService from '@modules/posts/services/EditPostService';
 
 export default class PostsController {
@@ -16,6 +17,27 @@ export default class PostsController {
     return response.json({ id, title, tag, content });
   }
 
+  public async index(request: Request, response: Response): Promise<Response> {
+    const listPosts = container.resolve(ListPostsServices);
+
+    const posts = await listPosts.execute();
+
+    const serializedPosts = posts.map(post => {
+      const { id, title: postTitle, author, content, tag, created_at } = post;
+
+      return {
+        id,
+        tag: tag.title,
+        title: postTitle,
+        author: author.name,
+        created_at,
+        content,
+      };
+    });
+
+    return response.json(serializedPosts);
+  }
+
   public async update(request: Request, response: Response): Promise<Response> {
     const { content, tag, title } = request.body;
     const post_id = request.params.id;
@@ -23,14 +45,14 @@ export default class PostsController {
     const editPostService = container.resolve(EditPostService);
 
     const {
-      author,
       id,
+      author,
       title: postTitle,
       content: postContent,
     } = await editPostService.execute({
-      content,
-      title,
       tag,
+      title,
+      content,
       post_id,
     });
 

@@ -8,6 +8,8 @@ export default interface IPostsRepository {
   save(data: Post): Promise<Post>;
   delete(id: string): Promise<void>;
   findById(Id: string): Promise<Post | undefined>;
+  list(): Promise<Post[]>;
+  searchPostsByTitle(title: string): Promise<Post[]>;
   findByTitle(title: string): Promise<Post | undefined>;
   findByTitleAndTag(data: IFindPostByTitleAndTagDTO): Promise<Post | undefined>;
 }
