@@ -26,7 +26,7 @@ class PostsRepository implements IPostsRepository {
   }
 
   public async list(): Promise<Post[]> {
-    const posts = await this.ormRepository.find();
+    const posts = await this.ormRepository.find({ relations: ['comments'] });
 
     return posts;
   }
@@ -34,6 +34,7 @@ class PostsRepository implements IPostsRepository {
   public async searchPostsByTitle(title: string): Promise<Post[]> {
     const posts = await this.ormRepository.find({
       where: { title: Like(`%${title}%`) },
+      relations: ['comments'],
     });
 
     return posts;

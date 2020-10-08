@@ -26,7 +26,7 @@ class Comment {
   @Column()
   post_id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { eager: true })
   @JoinColumn({ name: 'author_id' })
   author: User;
 

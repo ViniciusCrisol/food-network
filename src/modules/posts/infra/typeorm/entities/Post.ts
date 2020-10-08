@@ -5,10 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToMany,
   JoinColumn,
 } from 'typeorm';
 
 import User from '@modules/users/infra/typeorm/entities/User';
+import Comment from '@modules/comments/infra/typeorm/entities/Comment';
 import Tag from './Tag';
 
 @Entity('posts')
@@ -35,6 +37,9 @@ class Post {
 
   @Column()
   tag_id: string;
+
+  @OneToMany(() => Comment, comment => comment.post)
+  comments: Comment[];
 
   @CreateDateColumn()
   created_at: Date;

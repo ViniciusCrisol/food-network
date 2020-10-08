@@ -4,7 +4,7 @@ export default class CreateComments1602112650634 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'commments',
+        name: 'comments',
         columns: [
           {
             name: 'id',
@@ -61,6 +61,6 @@ export default class CreateComments1602112650634 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('commments');
+    await queryRunner.dropTable('comments');
   }
 }
