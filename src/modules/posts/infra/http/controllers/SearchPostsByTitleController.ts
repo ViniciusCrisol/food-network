@@ -10,36 +10,11 @@ export default class SearchPostsByTitleController {
     const posts = await searchbyTitle.execute(request.params.title);
 
     const serializedPosts = posts.map(post => {
-      const { id, title, content, updated_at, author, tag, comments } = post;
+      const { id, title, content, updated_at, author, tag } = post;
       const authorName = author.name;
       const tagTitle = tag.title;
 
-      const serializedComments = comments.map(comment => {
-        const {
-          id: commentId,
-          author: commentAuthor,
-          content: commentContent,
-          updated_at: commentUpdatedAt,
-        } = comment;
-        const commentAuthorName = commentAuthor.name;
-
-        return {
-          id: commentId,
-          authorName: commentAuthorName,
-          updated_at: commentUpdatedAt,
-          content: commentContent,
-        };
-      });
-
-      return {
-        id,
-        tagTitle,
-        title,
-        authorName,
-        updated_at,
-        content,
-        comments: serializedComments,
-      };
+      return { id, tagTitle, title, authorName, updated_at, content };
     });
 
     return response.json(serializedPosts);

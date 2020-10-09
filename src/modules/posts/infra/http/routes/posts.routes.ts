@@ -24,6 +24,8 @@ postsRouter.post(
 
 postsRouter.get('/', postsController.index);
 
+postsRouter.get('/:id', postsController.show);
+
 postsRouter.put('/:id', ensureAuthenticated, postsController.update);
 
 postsRouter.delete('/:id', postsController.delete);
