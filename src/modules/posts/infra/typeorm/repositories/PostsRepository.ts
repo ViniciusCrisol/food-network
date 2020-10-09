@@ -1,8 +1,6 @@
 import { getRepository, Like, Repository } from 'typeorm';
 
 import ICreatePostDTO from '@modules/posts/dtos/ICreatePostDTO';
-import IFindPostByTitleAndTagDTO from '@modules/posts/dtos/IFindPostByTitleAndTagDTO';
-
 import IPostsRepository from '@modules/posts/repositories/IPostsRepository';
 import Post from '../entities/Post';
 
@@ -31,7 +29,7 @@ class PostsRepository implements IPostsRepository {
     return posts;
   }
 
-  public async searchPostsByTitle(title: string): Promise<Post[]> {
+  public async searchByTitle(title: string): Promise<Post[]> {
     const posts = await this.ormRepository.find({
       where: { title: Like(`%${title}%`) },
       relations: ['comments'],
@@ -50,15 +48,6 @@ class PostsRepository implements IPostsRepository {
 
   public async findById(id: string): Promise<Post | undefined> {
     const post = await this.ormRepository.findOne(id);
-
-    return post;
-  }
-
-  public async findByTitleAndTag({
-    tag,
-    title,
-  }: IFindPostByTitleAndTagDTO): Promise<Post | undefined> {
-    const post = await this.ormRepository.findOne({ where: { tag, title } });
 
     return post;
   }

@@ -1,9 +1,7 @@
 import { uuid } from 'uuidv4';
 
 import ICreatePostDTO from '@modules/posts/dtos/ICreatePostDTO';
-import IFindPostByTitleAndTagDTO from '@modules/posts/dtos/IFindPostByTitleAndTagDTO';
 import IPostsRepository from '@modules/posts/repositories/IPostsRepository';
-
 import Post from '../../infra/typeorm/entities/Post';
 
 class FakePostsRepository implements IPostsRepository {
@@ -41,7 +39,7 @@ class FakePostsRepository implements IPostsRepository {
     return data;
   }
 
-  public async searchPostsByTitle(title: string): Promise<Post[]> {
+  public async searchByTitle(title: string): Promise<Post[]> {
     const foundedPost = this.posts.filter(post => post.title === title);
 
     return foundedPost;
@@ -49,17 +47,6 @@ class FakePostsRepository implements IPostsRepository {
 
   public async findById(id: string): Promise<Post | undefined> {
     const foundedPost = this.posts.find(post => post.id === id);
-
-    return foundedPost;
-  }
-
-  public async findByTitleAndTag({
-    tag,
-    title,
-  }: IFindPostByTitleAndTagDTO): Promise<Post | undefined> {
-    const foundedPost = this.posts.find(
-      post => post.tag.title === tag && post.title === title,
-    );
 
     return foundedPost;
   }

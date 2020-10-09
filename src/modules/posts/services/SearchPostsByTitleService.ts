@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
-import Post from '../infra/typeorm/entities/Post';
 import IPostsRepository from '../repositories/IPostsRepository';
+import Post from '../infra/typeorm/entities/Post';
 
 @injectable()
 class SearchPostsByTitleService {
@@ -11,7 +11,7 @@ class SearchPostsByTitleService {
   ) {}
 
   public async execute(title: string): Promise<Post[]> {
-    const posts = await this.postsRepository.searchPostsByTitle(title);
+    const posts = await this.postsRepository.searchByTitle(title);
 
     return posts;
   }

@@ -1,7 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-
 import IPostsRepository from '../repositories/IPostsRepository';
 
 @injectable()
