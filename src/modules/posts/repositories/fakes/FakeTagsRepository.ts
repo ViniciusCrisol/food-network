@@ -1,7 +1,6 @@
 import { uuid } from 'uuidv4';
 
 import ITagsRepository from '@modules/posts/repositories/ITagsRepository';
-
 import Tag from '../../infra/typeorm/entities/Tag';
 
 class FakeTagsRepository implements ITagsRepository {

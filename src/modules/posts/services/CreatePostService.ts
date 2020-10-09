@@ -1,12 +1,10 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-
-import Post from '../infra/typeorm/entities/Post';
 import IPostsRepository from '../repositories/IPostsRepository';
 import ITagsRepository from '../repositories/ITagsRepository';
+import Post from '../infra/typeorm/entities/Post';
 
 interface IRequest {
   tag: string;

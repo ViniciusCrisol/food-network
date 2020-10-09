@@ -1,12 +1,9 @@
 import AppError from '@shared/errors/AppError';
-
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
-
 import FakePostsRepository from '../repositories/fakes/FakePostsRepository';
 import FakeTagsRepository from '../repositories/fakes/FakeTagsRepository';
-
-import EditPostService from './EditPostService';
 import CreatePostService from './CreatePostService';
+import EditPostService from './EditPostService';
 
 let editPost: EditPostService;
 let createPost: CreatePostService;
