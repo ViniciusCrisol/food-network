@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.nav`
   width: 100%;
-  height: 68px;
+  height: 58px;
 
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   position: sticky;
@@ -20,9 +20,12 @@ export const Container = styled.nav`
     align-items: center;
 
     h1 {
-      line-height: 1;
-      font-size: 2rem;
-      color: ${({ theme }) => theme.colors.text}40;
+      font-size: 1.3rem;
+      color: ${({ theme }) => theme.colors.text}65;
+
+      span {
+        opacity: 0.6;
+      }
     }
   }
 `;
