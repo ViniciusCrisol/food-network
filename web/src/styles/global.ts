@@ -17,4 +17,8 @@ export default createGlobalStyle`
   body, input, button {
     font-family: Roboto, sans-serif;
   }
+
+  button, a{
+    cursor: pointer;
+  }
 `;

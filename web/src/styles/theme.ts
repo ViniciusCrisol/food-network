@@ -3,7 +3,8 @@ const theme = {
     text: '#242729',
     primary: '#e5003d',
     secondary: '#ffcc33',
-    background: '#1f1f1f1',
+    background: '#fff',
+    buttonText: '#fff',
   },
 };
 

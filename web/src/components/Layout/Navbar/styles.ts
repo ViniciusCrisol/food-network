@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.nav`
   width: 100%;
@@ -25,6 +26,40 @@ export const Container = styled.nav`
 
       span {
         opacity: 0.6;
+      }
+    }
+  }
+`;
+
+export const UserContainer = styled.div`
+  height: 100%;
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  a {
+    padding: 6px 16px;
+    border-radius: 4px;
+
+    transition: background 200ms;
+
+    &:first-child {
+      color: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.primary}15;
+
+      &:hover {
+        background: ${({ theme }) => theme.colors.primary}25;
+      }
+    }
+
+    & + a {
+      margin-left: 1rem;
+      color: ${({ theme }) => theme.colors.buttonText};
+      background: ${({ theme }) => theme.colors.primary};
+
+      &:hover {
+        background: ${({ theme }) => darken(0.05, theme.colors.primary)};
       }
     }
   }

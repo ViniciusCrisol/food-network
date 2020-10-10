@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, UserContainer } from './styles';
 
 const Navbar: React.FC = () => {
   return (
@@ -9,6 +9,10 @@ const Navbar: React.FC = () => {
         <h1>
           <span>food</span> network
         </h1>
+        <UserContainer>
+          <a>Log in</a>
+          <a>Sign up</a>
+        </UserContainer>
       </div>
     </Container>
   );
