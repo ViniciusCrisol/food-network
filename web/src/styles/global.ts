@@ -9,13 +9,12 @@ export default createGlobalStyle`
 
   body {
     font-size: 16px;
+    color: ${({ theme }) => theme.colors.text};
     -webkit-font-smoothing: antialiased !important;
     background-color: ${({ theme }) => theme.colors.background};
   }
 
-
-  *, input, button {
+  body, input, button {
     font-family: Roboto, sans-serif;
-    color: ${({ theme }) => theme.colors.text};
   }
 `;
