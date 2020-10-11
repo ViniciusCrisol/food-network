@@ -3,7 +3,7 @@ import { darken } from 'polished';
 
 export const Container = styled.nav`
   width: 100%;
-  height: 58px;
+  height: 64px;
 
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   background: ${({ theme }) => theme.colors.background};

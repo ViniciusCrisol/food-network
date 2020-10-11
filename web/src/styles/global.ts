@@ -13,10 +13,6 @@ export default createGlobalStyle`
     min-height: 100vh;
     font-size: 100%;
 
-    @media(max-width: 480px){
-      font-size: 82.5%;
-    }
-
     @media(max-width: 760px){
       font-size: 90%;
     }

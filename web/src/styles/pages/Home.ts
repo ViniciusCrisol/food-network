@@ -7,7 +7,8 @@ export const Container = styled.div`
 
 export const Bannner = styled.div`
   width: 100%;
-  height: 420px;
+  height: 100%;
+  min-height: 420px;
 
   padding: 1rem;
   text-align: center;
@@ -35,6 +36,7 @@ export const Bannner = styled.div`
     margin-top: 3rem;
 
     a {
+      font-weight: 600;
       background: white;
       border-radius: 4px;
       padding: 0.5rem 1rem;
