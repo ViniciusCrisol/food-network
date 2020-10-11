@@ -25,6 +25,7 @@ export const Container = styled.nav`
     align-items: center;
 
     h1 {
+      cursor: pointer;
       font-size: 1.3rem;
       color: ${({ theme }) => theme.colors.text}85;
 

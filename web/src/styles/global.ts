@@ -9,8 +9,7 @@ export default createGlobalStyle`
   }
 
   html,
-  body,
-  #root {
+  body {
     min-height: 100vh;
     font-size: 100%;
 
@@ -33,6 +32,10 @@ export default createGlobalStyle`
 
   button, a {
     cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   button{

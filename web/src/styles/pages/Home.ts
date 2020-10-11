@@ -7,6 +7,7 @@ export const Container = styled.div`
   text-align: center;
 
   h1 {
+    line-height: 1;
     font-size: 3rem;
     font-family: 'Roboto Slab', serif;
   }
@@ -61,7 +62,7 @@ export const Bannner = styled.div`
 export const Content = styled.section`
   padding: 1rem;
 
-  > h1 {
+  h1 {
     margin-top: 3rem;
     font-size: 2.2rem;
   }
