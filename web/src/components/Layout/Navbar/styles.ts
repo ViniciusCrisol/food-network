@@ -6,7 +6,10 @@ export const Container = styled.nav`
   height: 58px;
 
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+  background: ${({ theme }) => theme.colors.background};
+
   position: sticky;
+  z-index: 999;
   top: 0;
 
   > div {
@@ -15,14 +18,14 @@ export const Container = styled.nav`
     max-width: 1280px;
 
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 1rem;
 
     display: flex;
     align-items: center;
 
     h1 {
       font-size: 1.3rem;
-      color: ${({ theme }) => theme.colors.text}65;
+      color: ${({ theme }) => theme.colors.text}85;
 
       span {
         opacity: 0.6;
@@ -39,27 +42,29 @@ export const UserContainer = styled.div`
   align-items: center;
 
   a {
-    padding: 6px 16px;
     border-radius: 4px;
+    padding: 0.5rem 1rem;
+
+    font-weight: 700;
+    font-size: 0.875rem;
 
     transition: background 200ms;
+    color: ${({ theme }) => theme.colors.buttonText};
 
     &:first-child {
-      color: ${({ theme }) => theme.colors.primary};
-      background: ${({ theme }) => theme.colors.primary}15;
+      background: ${({ theme }) => theme.colors.secondary};
 
       &:hover {
-        background: ${({ theme }) => theme.colors.primary}25;
+        background: ${({ theme }) => darken(0.12, theme.colors.secondary)};
       }
     }
 
     & + a {
       margin-left: 1rem;
-      color: ${({ theme }) => theme.colors.buttonText};
       background: ${({ theme }) => theme.colors.primary};
 
       &:hover {
-        background: ${({ theme }) => darken(0.05, theme.colors.primary)};
+        background: ${({ theme }) => darken(0.2, theme.colors.primary)};
       }
     }
   }

@@ -1,18 +1,28 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Container } from '../styles/pages/Home';
+import { Container, Bannner } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
   return (
     <Container>
       <Head>
-        <title>Home</title>
+        <title>
+          Food Network - Where people Learn, Share, &amp; Build Recipes
+        </title>
       </Head>
 
-      <h1>Dicas de uso</h1>
-      <p> ⇨ Importar imagens svg como componente react</p>
-      <p> ⇨ Declarar components como const's do tipo React.FC</p>
+      <Bannner>
+        <h1>Share recipes with us!</h1>
+        <p>
+          We are a website that aims to help, teach, and share recipes with the
+          community. That way, we will have a tastier world.
+        </p>
+        <div>
+          <a>See all recipes</a>
+          <a>Create a recipe</a>
+        </div>
+      </Bannner>
     </Container>
   );
 };

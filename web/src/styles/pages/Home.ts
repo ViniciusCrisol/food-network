@@ -2,21 +2,46 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
+`;
+
+export const Bannner = styled.div`
+  width: 100%;
+  height: 420px;
+
+  padding: 1rem;
+  text-align: center;
+  background: ${({ theme }) => theme.colors.secondary};
 
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   h1 {
-    font-size: 54px;
-    color: ${({ theme }) => theme.colors.primary};
-    margin: 40px 0;
+    font-size: 3rem;
+    font-family: 'Roboto Slab', serif;
   }
 
   p {
-    font-size: 24px;
-    margin-top: 8px;
+    max-width: 450px;
+    margin-top: 1rem;
+
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+
+  div {
+    margin-top: 3rem;
+
+    a {
+      background: white;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+
+      & + a {
+        margin-left: 1rem;
+      }
+    }
   }
 `;

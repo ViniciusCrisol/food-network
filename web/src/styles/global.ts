@@ -7,18 +7,34 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    font-size: 16px;
+  html,
+  body,
+  #root {
+    min-height: 100vh;
+    font-size: 100%;
+
+    @media(max-width: 480px){
+      font-size: 82.5%;
+    }
+
+    @media(max-width: 760px){
+      font-size: 90%;
+    }
+  }
+
+
+  body, input, button, textarea {
+    font-family: 'Open Sans', sans-serif;
     color: ${({ theme }) => theme.colors.text};
+
     -webkit-font-smoothing: antialiased !important;
+  }
+
+  body {
     background-color: ${({ theme }) => theme.colors.background};
   }
 
-  body, input, button {
-    font-family: Roboto, sans-serif;
-  }
-
-  button, a{
+  button, a {
     cursor: pointer;
   }
 `;
