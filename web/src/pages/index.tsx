@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Container, Bannner } from '../styles/pages/Home';
+import { Container, Bannner, Content } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
   return (
@@ -23,6 +23,46 @@ const Home: React.FC = () => {
           <a>Create a recipe</a>
         </div>
       </Bannner>
+
+      <Content>
+        <h1>Foor cooks, by cooks</h1>
+        <div className="separator" />
+        <p>
+          Food Network is an <a>open community</a> for anyone who cooks. We help
+          you get answers to your toughest questions, share knowledge, and more.
+          so we will make the world more delicious!
+        </p>
+      </Content>
+
+      <Content>
+        <h1>Foor cooks, by cooks</h1>
+        <div className="separator" />
+        <p>
+          Food Network is an <a>open community</a> for anyone who cooks. We help
+          you get answers to your toughest questions, share knowledge, and more.
+          so we will make the world more delicious!
+        </p>
+      </Content>
+
+      <Content>
+        <h1>Foor cooks, by cooks</h1>
+        <div className="separator" />
+        <p>
+          Food Network is an <a>open community</a> for anyone who cooks. We help
+          you get answers to your toughest questions, share knowledge, and more.
+          so we will make the world more delicious!
+        </p>
+      </Content>
+
+      <Content>
+        <h1>Foor cooks, by cooks</h1>
+        <div className="separator" />
+        <p>
+          Food Network is an <a>open community</a> for anyone who cooks. We help
+          you get answers to your toughest questions, share knowledge, and more.
+          so we will make the world more delicious!
+        </p>
+      </Content>
     </Container>
   );
 };
