@@ -10,7 +10,6 @@ export default createGlobalStyle`
 
   html,
   body {
-    min-height: 100vh;
     font-size: 100%;
 
     @media(max-width: 760px){
@@ -18,6 +17,12 @@ export default createGlobalStyle`
     }
   }
 
+  html,
+  body,
+  #__next {
+    height: 100%;
+    min-height: 100vh;
+  }
 
   body, input, button, textarea {
     font-family: 'Open Sans', sans-serif;
