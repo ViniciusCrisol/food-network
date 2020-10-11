@@ -1,11 +1,13 @@
 import React from 'react';
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const Layout: React.FC = ({ children }) => (
   <>
     <Navbar />
-    {children}
+    <main style={{ marginBottom: 48 }}>{children}</main>
+    <Footer />
   </>
 );
 

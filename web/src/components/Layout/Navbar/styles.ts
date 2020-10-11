@@ -10,6 +10,7 @@ export const Container = styled.nav`
 
   position: sticky;
   z-index: 999;
+  left: 0;
   top: 0;
 
   > div {
