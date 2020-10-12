@@ -3,27 +3,28 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
-import api from '../../services/api';
-
 import Button from '../../components/Button';
 import Input from '../../components/UnformInput';
-
+import { useAuth } from '../../hooks/authContext';
 import { Container, Form } from '../../styles/pages/Auth';
 
 const SignUp: React.FC = () => {
+  const { signUp } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(async data => {
-    setLoading(true);
-    try {
-      const response = await api.post('/users', data);
-      console.log(response.data);
-    } catch (err) {
-      console.log(err.response.data.message);
-      setLoading(false);
-    }
-  }, []);
+  const handleSubmit = useCallback(
+    async ({ email, name, password }: ISignUpData) => {
+      setLoading(true);
+      try {
+        await signUp({ email, name, password });
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   return (
     <Container>

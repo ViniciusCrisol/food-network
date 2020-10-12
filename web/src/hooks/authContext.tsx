@@ -58,7 +58,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         api.defaults.headers.authorization = `Bearer ${token}`;
 
         setData({ token, user });
-        router.push('/');
+        router.push('/profile');
       } catch (err) {
         throw new Error(err.response.data.message);
       }
@@ -66,18 +66,26 @@ export const AuthProvider: React.FC = ({ children }) => {
     [router]
   );
 
-  const signUp = useCallback(async ({ name, email, password }: ISignUpData) => {
-    const response = await api.post('users', { name, email, password });
+  const signUp = useCallback(
+    async ({ name, email, password }: ISignUpData) => {
+      try {
+        const response = await api.post('users', { name, email, password });
 
-    const { token, user } = response.data;
+        const { token, user } = response.data;
 
-    Cookie.set('@FoodNetwork:token', token);
-    Cookie.set('@FoodNetwork:user', JSON.stringify(user));
+        Cookie.set('@FoodNetwork:token', token);
+        Cookie.set('@FoodNetwork:user', JSON.stringify(user));
 
-    api.defaults.headers.authorization = `Bearer ${token}`;
+        api.defaults.headers.authorization = `Bearer ${token}`;
 
-    setData({ token, user });
-  }, []);
+        setData({ token, user });
+        router.push('/profile');
+      } catch (err) {
+        throw new Error(err.response.data.message);
+      }
+    },
+    [router]
+  );
 
   const signOut = useCallback(() => {
     Cookie.remove('@FoodNetwork:token');
@@ -88,8 +96,16 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const handleRouteChange = () => {
-      if (data === null && router.pathname === '/profile') {
-        window.location.href = '/login';
+      const isAuthenticated =
+        router.pathname === '/auth/login' ||
+        router.pathname === '/auth/register';
+
+      if (!data && router.pathname === '/profile') {
+        window.location.href = '/auth/login';
+      }
+
+      if (data && isAuthenticated) {
+        window.location.href = '/profile';
       }
     };
 

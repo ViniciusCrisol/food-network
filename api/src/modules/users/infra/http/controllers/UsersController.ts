@@ -11,6 +11,6 @@ export default class UsersController {
 
     const { token } = await createUser.execute({ name, email, password });
 
-    return response.json({ name, email, token });
+    return response.json({ user: { name, email }, token });
   }
 }

@@ -35,7 +35,7 @@ describe('AuthnticateUser', () => {
     });
 
     expect(response).toHaveProperty('token');
-    expect(response.user).toEqual(user);
+    expect(response.user).toEqual(user.user);
   });
 
   it('should not be able to authenticate with a wrong email', async () => {

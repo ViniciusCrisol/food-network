@@ -24,7 +24,7 @@ describe('CreateUser', () => {
       password: 'password',
     });
 
-    expect(user).toHaveProperty('id');
+    expect(user.user).toHaveProperty('id');
   });
 
   it('should not be able to create a new user with same e-mail from another', async () => {

@@ -3,12 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
-import api from '../../services/api';
-import { useAuth } from '../../hooks/authContext';
-
 import Button from '../../components/Button';
 import Input from '../../components/UnformInput';
-
+import { useAuth } from '../../hooks/authContext';
 import { Container, Form } from '../../styles/pages/Auth';
 
 const LogIn: React.FC = () => {
