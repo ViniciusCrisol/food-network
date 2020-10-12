@@ -38,7 +38,10 @@ const Home: React.FC = () => {
           <h2>Public Q&amp;A</h2>
           <p>
             Get answers and give back by sharing your knowledge with others.
-            <Link href="signup"> Sign up</Link> for an account.
+            <Link href="signup">
+              <a>&nbsp;Sign up&nbsp;</a>
+            </Link>
+            for an account.
           </p>
           <a>Browse recipes</a>
         </Card>

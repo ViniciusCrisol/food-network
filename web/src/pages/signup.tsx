@@ -39,7 +39,9 @@ const SignUp: React.FC = () => {
         <Button loading={loading} type="submit">
           Sign up
         </Button>
-        <Link href="login">I already have an account.</Link>
+        <Link href="login">
+          <a>I already have an account.</a>
+        </Link>
       </Form>
     </Container>
   );
