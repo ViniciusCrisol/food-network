@@ -36,14 +36,14 @@ export const Container = styled.nav`
   }
 `;
 
-export const UserContainer = styled.div`
+export const RightContainer = styled.div`
   height: 100%;
   margin-left: auto;
 
   display: flex;
   align-items: center;
 
-  a {
+  > a {
     border-radius: 4px;
     padding: 0.5rem 1rem;
 
@@ -69,5 +69,18 @@ export const UserContainer = styled.div`
         background: ${({ theme }) => darken(0.07, theme.colors.primary)};
       }
     }
+  }
+`;
+
+export const UserContainer = styled.section`
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  a {
+    margin-left: 4px;
+    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
