@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
+
+import api from '../services/api';
 
 import Button from '../components/Button';
 import Input from '../components/UnformInput';
@@ -10,6 +12,18 @@ import { Container, Form } from '../styles/pages/Auth';
 
 const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = useCallback(async data => {
+    setLoading(true);
+    try {
+      const response = await api.post('/sessions', data);
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.response.data.message);
+      setLoading(false);
+    }
+  }, []);
 
   return (
     <Container>
@@ -17,11 +31,13 @@ const LogIn: React.FC = () => {
         <title>Log In - Food Network</title>
       </Head>
 
-      <Form ref={formRef} onSubmit={data => console.log(data)}>
+      <Form ref={formRef} onSubmit={handleSubmit}>
         <h2>Log in</h2>
         <Input name="email" placeholder="E-mail" />
         <Input name="password" type="password" placeholder="Password" />
-        <Button type="submit">Log in</Button>
+        <Button loading={loading} type="submit">
+          Log in
+        </Button>
         <Link href="signup">I don't have an account.</Link>
       </Form>
     </Container>

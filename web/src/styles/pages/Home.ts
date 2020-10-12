@@ -12,9 +12,9 @@ export const Container = styled.div`
 
   .separator {
     height: 6px;
-    max-width: 60px;
+    width: 60px;
 
-    margin: 2rem auto;
+    margin: 2rem 0;
     border-radius: 4px;
     background: ${({ theme }) => theme.colors.primary};
   }
@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 export const Bannner = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 48px);
 
   padding: 3rem 1rem;
   background: ${({ theme }) => theme.colors.secondary};
@@ -57,7 +57,13 @@ export const Bannner = styled.div`
 `;
 
 export const Content = styled.section`
+  height: 100vh;
   padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   h1 {
     margin-top: 3rem;

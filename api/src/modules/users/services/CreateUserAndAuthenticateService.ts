@@ -1,5 +1,7 @@
 import { injectable, inject } from 'tsyringe';
+import { sign } from 'jsonwebtoken';
 
+import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
@@ -11,8 +13,13 @@ interface IRequest {
   password: string;
 }
 
+interface IResponse {
+  user: User;
+  token: string;
+}
+
 @injectable()
-class CreateUserService {
+class CreateUserAndAuthenticateService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -21,7 +28,11 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ name, email, password }: IRequest): Promise<User> {
+  public async execute({
+    name,
+    email,
+    password,
+  }: IRequest): Promise<IResponse> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
@@ -36,8 +47,15 @@ class CreateUserService {
       password: hashedPassword,
     });
 
-    return user;
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
+      subject: user.id,
+      expiresIn,
+    });
+
+    return { user, token };
   }
 }
 
-export default CreateUserService;
+export default CreateUserAndAuthenticateService;
