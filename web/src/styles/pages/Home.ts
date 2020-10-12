@@ -22,7 +22,7 @@ export const Container = styled.div`
 
 export const Bannner = styled.div`
   width: 100%;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 64px);
 
   padding: 3rem 1rem;
   background: ${({ theme }) => theme.colors.secondary};
