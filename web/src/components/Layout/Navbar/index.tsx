@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { useAuth } from '../../../hooks/authContext';
+
 import { Container, UserContainer } from './styles';
 
 const Navbar: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <Container>
       <div>
@@ -14,13 +18,19 @@ const Navbar: React.FC = () => {
         </Link>
 
         <UserContainer>
-          <Link href="login">
-            <a>Log in</a>
-          </Link>
+          {user ? (
+            <h1>{user.name}</h1>
+          ) : (
+            <>
+              <Link href="/auth/login">
+                <a>Log in</a>
+              </Link>
 
-          <Link href="signup">
-            <a>Sign up</a>
-          </Link>
+              <Link href="/auth/signup">
+                <a>Sign up</a>
+              </Link>
+            </>
+          )}
         </UserContainer>
       </div>
     </Container>

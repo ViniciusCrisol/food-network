@@ -3,12 +3,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
-import api from '../services/api';
+import api from '../../services/api';
 
-import Button from '../components/Button';
-import Input from '../components/UnformInput';
+import Button from '../../components/Button';
+import Input from '../../components/UnformInput';
 
-import { Container, Form } from '../styles/pages/Auth';
+import { Container, Form } from '../../styles/pages/Auth';
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -39,7 +39,7 @@ const SignUp: React.FC = () => {
         <Button loading={loading} type="submit">
           Sign up
         </Button>
-        <Link href="login">
+        <Link href="/auth/login">
           <a>I already have an account.</a>
         </Link>
       </Form>

@@ -3,24 +3,25 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
-import api from '../services/api';
+import api from '../../services/api';
+import { useAuth } from '../../hooks/authContext';
 
-import Button from '../components/Button';
-import Input from '../components/UnformInput';
+import Button from '../../components/Button';
+import Input from '../../components/UnformInput';
 
-import { Container, Form } from '../styles/pages/Auth';
+import { Container, Form } from '../../styles/pages/Auth';
 
 const LogIn: React.FC = () => {
+  const { signIn } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(async data => {
+  const handleSubmit = useCallback(async ({ email, password }: ISignInData) => {
     setLoading(true);
     try {
-      const response = await api.post('/sessions', data);
-      console.log(response.data);
+      await signIn({ email, password });
     } catch (err) {
-      console.log(err.response.data.message);
+      console.log(err);
       setLoading(false);
     }
   }, []);
@@ -38,7 +39,7 @@ const LogIn: React.FC = () => {
         <Button loading={loading} type="submit">
           Log in
         </Button>
-        <Link href="signup">
+        <Link href="/auth/signup">
           <a>I don't have an account.</a>
         </Link>
       </Form>
