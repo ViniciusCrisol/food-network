@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   text-align: center;
@@ -22,9 +23,8 @@ export const Container = styled.div`
 export const Bannner = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 420px;
 
-  padding: 1rem;
+  padding: 3rem 1rem;
   background: ${({ theme }) => theme.colors.secondary};
 
   display: flex;
@@ -70,6 +70,49 @@ export const Content = styled.section`
 
     a {
       color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+`;
+
+export const Card = styled.div`
+  max-width: 520px;
+  width: 100%;
+
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 2.5rem auto;
+  box-shadow: rgba(0, 0, 0, 0.32) 0px 2px 8px;
+  background: ${({ theme }) => theme.colors.background};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 1.5rem;
+    font-family: 'Roboto Slab', serif;
+  }
+
+  p {
+    margin-top: 1rem;
+    max-width: 350px;
+
+    a {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
+  > a {
+    margin-top: 1.5rem;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    background: ${({ theme }) => theme.colors.primary};
+
+    color: ${({ theme }) => theme.colors.buttonText};
+    transition: background 200ms;
+
+    &:hover {
+      background: ${({ theme }) => darken(0.07, theme.colors.primary)};
     }
   }
 `;

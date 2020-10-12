@@ -5,13 +5,28 @@ export const Container = styled.div`
   height: 100%;
 
   padding: 2rem 1rem;
-  background: #eff0f1;
+  background: ${({ theme }) => theme.colors.gray};
 `;
 
 export const Form = styled(Unform)`
-  margin: 0 auto;
   max-width: 420px;
+
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 4px;
+  background: ${({ theme }) => theme.colors.background};
 
   display: flex;
   flex-direction: column;
+
+  h2 {
+    margin: 1rem 4px;
+    font-weight: 500;
+  }
+
+  a {
+    text-align: right;
+    margin-top: 0.5rem;
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;

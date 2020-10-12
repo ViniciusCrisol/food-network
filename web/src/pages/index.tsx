@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 
-import { Container, Bannner, Content } from '../styles/pages/Home';
+import { Container, Bannner, Content, Card } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
   return (
@@ -32,6 +33,15 @@ const Home: React.FC = () => {
           you get answers to your toughest questions, share knowledge, and more.
           so we will make the world more delicious!
         </p>
+
+        <Card>
+          <h2>Public Q&amp;A</h2>
+          <p>
+            Get answers and give back by sharing your knowledge with others.
+            <Link href="signup"> Sign up</Link> for an account.
+          </p>
+          <a>Browse recipes</a>
+        </Card>
       </Content>
     </Container>
   );

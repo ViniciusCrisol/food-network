@@ -27,7 +27,7 @@ export const Container = styled.nav`
     h1 {
       cursor: pointer;
       font-size: 1.3rem;
-      color: ${({ theme }) => theme.colors.text}85;
+      color: ${({ theme }) => theme.colors.text}50;
 
       span {
         opacity: 0.6;
@@ -66,7 +66,7 @@ export const UserContainer = styled.div`
       background: ${({ theme }) => theme.colors.primary};
 
       &:hover {
-        background: ${({ theme }) => darken(0.2, theme.colors.primary)};
+        background: ${({ theme }) => darken(0.07, theme.colors.primary)};
       }
     }
   }

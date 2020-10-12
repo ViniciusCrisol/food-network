@@ -3,12 +3,12 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+import Content from './styles';
+
 const Layout: React.FC = ({ children }) => (
   <>
     <Navbar />
-    <main style={{ marginBottom: 48, height: 'calc(100% - 112px)' }}>
-      {children}
-    </main>
+    <Content>{children}</Content>
     <Footer />
   </>
 );

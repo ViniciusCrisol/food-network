@@ -5,6 +5,7 @@ const theme = {
     secondary: '#ffcc33',
     background: '#fff',
     buttonText: '#fff',
+    gray: '#ececec',
   },
 };
 

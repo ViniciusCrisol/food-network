@@ -8,25 +8,24 @@ import Input from '../components/UnformInput';
 
 import { Container, Form } from '../styles/pages/Auth';
 
-const SignUp: React.FC = () => {
+const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   return (
     <Container>
       <Head>
-        <title>Sign Up - Food Network</title>
+        <title>Log In - Food Network</title>
       </Head>
 
       <Form ref={formRef} onSubmit={data => console.log(data)}>
-        <h2>Sign up</h2>
-        <Input name="name" placeholder="Name" />
+        <h2>Log in</h2>
         <Input name="email" placeholder="E-mail" />
         <Input name="password" type="password" placeholder="Password" />
-        <Button type="submit">Sign up</Button>
-        <Link href="login">I already have an account.</Link>
+        <Button type="submit">Log in</Button>
+        <Link href="signup">I don't have an account.</Link>
       </Form>
     </Container>
   );
 };
 
-export default SignUp;
+export default LogIn;

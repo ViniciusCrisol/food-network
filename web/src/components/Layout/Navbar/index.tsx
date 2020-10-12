@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         <UserContainer>
-          <Link href="signin">
+          <Link href="login">
             <a>Log in</a>
           </Link>
 
