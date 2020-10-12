@@ -19,4 +19,8 @@ export const Container = styled.button`
   &:hover {
     background: ${({ theme }) => darken(0.07, theme.colors.primary)};
   }
+
+  &:disabled {
+    opacity: 0.6;
+  }
 `;

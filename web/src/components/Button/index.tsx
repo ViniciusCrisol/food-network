@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Loader from './Loader';
 import { Container } from './styles';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,7 +8,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
-  <Container {...rest}>{loading ? <h1>...</h1> : children}</Container>
+  <Container disabled={loading} {...rest}>
+    {loading ? <Loader /> : children}
+  </Container>
 );
 
 export default Button;
