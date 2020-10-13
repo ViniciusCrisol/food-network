@@ -4,6 +4,7 @@ import { FormHandles } from '@unform/core';
 
 import Button from '../../components/Button';
 import Input from '../../components/UnformInput';
+import Textarea from '../../components/UnformTextarea';
 
 import { Container, Form, InputHeader } from '../../styles/pages/CreatePost';
 
@@ -22,6 +23,11 @@ const CreatePost: React.FC = () => {
           <span>Be specific and imagine you’re talking to another person</span>
         </InputHeader>
         <Input name="title" placeholder="My cake is so delicious!" />
+        <InputHeader>
+          <strong>Body</strong>
+          <span>Inclue all the information</span>
+        </InputHeader>
+        <Textarea name="title" placeholder="My cake is so delicious!" />
       </Form>
 
       <Button>Create post</Button>
