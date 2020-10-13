@@ -43,8 +43,12 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-  button{
+  button {
     border: none;
     background: none;
+  }
+
+   ul{
+    list-style: none;
   }
 `;

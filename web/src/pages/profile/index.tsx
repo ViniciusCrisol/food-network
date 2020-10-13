@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Container } from '../../styles/pages/Profile';
+import { Container, PostsContainer, Post } from '../../styles/pages/Profile';
 import { GetServerSideProps } from 'next';
 
 interface IPostsData {
@@ -32,6 +32,14 @@ const Profile: React.FC<IProfileProps> = ({ userInformation }) => {
         <strong>{userInformation.name}</strong>
         <span>{userInformation.created_at}</span>
       </aside>
+
+      <PostsContainer>
+        {userInformation.posts.map(post => (
+          <Post>
+            <h1>{post.title}</h1>
+          </Post>
+        ))}
+      </PostsContainer>
     </Container>
   );
 };
