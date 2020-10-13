@@ -16,7 +16,6 @@ export const Form = styled(Unform)`
   > button {
     width: 50%;
     height: 2rem;
-
     font-size: 0.8rem;
   }
 `;

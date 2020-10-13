@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Form = styled(Unform)`
-  max-width: 420px;
+  max-width: 480px;
 
   padding: 2rem;
   margin: 0 auto;

@@ -17,7 +17,7 @@ const CreatePost: React.FC = () => {
         <title>Create post - Food Network</title>
       </Head>
 
-      <Form ref={formRef} onSubmit={data => console.log(data)}>
+      <Form ref={formRef} onSubmit={data => console.log(data.content)}>
         <InputHeader>
           <strong>Title</strong>
           <span>Be specific and imagine you’re talking to another person</span>
