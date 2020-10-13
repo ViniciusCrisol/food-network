@@ -12,7 +12,7 @@ export default createGlobalStyle`
   body {
     font-size: 100%;
 
-    @media(max-width: 760px){
+    @media(max-width: 760px) {
       font-size: 90%;
     }
   }
@@ -48,7 +48,7 @@ export default createGlobalStyle`
     background: none;
   }
 
-   ul{
+  ul{
     list-style: none;
   }
 `;
