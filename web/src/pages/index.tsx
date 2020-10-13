@@ -21,7 +21,9 @@ const Home: React.FC = () => {
         </p>
         <div>
           <a>See all recipes</a>
-          <a>Create a recipe</a>
+          <Link href="/posts/create">
+            <a>Create a recipe</a>
+          </Link>
         </div>
       </Bannner>
 

@@ -44,10 +44,12 @@ export const Bannner = styled.div`
     margin-top: 3rem;
 
     a {
-      font-weight: 600;
       background: white;
       border-radius: 4px;
       padding: 0.5rem 1rem;
+
+      font-weight: 600;
+      color: ${({ theme }) => theme.colors.text};
 
       & + a {
         margin-left: 1rem;
