@@ -94,25 +94,25 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData(null);
   }, []);
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      const isAuthenticated =
-        router.pathname === '/auth/login' ||
-        router.pathname === '/auth/register';
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     const isAuthenticated =
+  //       router.pathname === '/auth/login' ||
+  //       router.pathname === '/auth/register';
 
-      if (!data && router.pathname === '/profile') {
-        window.location.href = '/auth/login';
-      }
+  //     if (!data && router.pathname === '/profile') {
+  //       window.location.href = '/auth/login';
+  //     }
 
-      if (data && isAuthenticated) {
-        window.location.href = '/profile';
-      }
-    };
+  //     if (data && isAuthenticated) {
+  //       window.location.href = '/profile';
+  //     }
+  //   };
 
-    handleRouteChange();
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, [data, router]);
+  //   handleRouteChange();
+  //   router.events.on('routeChangeStart', handleRouteChange);
+  //   return () => router.events.off('routeChangeStart', handleRouteChange);
+  // }, [data, router]);
 
   return (
     <AuthContext.Provider value={{ user: data?.user, signIn, signUp, signOut }}>

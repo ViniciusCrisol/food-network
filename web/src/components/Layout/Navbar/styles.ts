@@ -24,6 +24,10 @@ export const Container = styled.nav`
     display: flex;
     align-items: center;
 
+    @media (max-width: 480px) {
+      justify-content: center;
+    }
+
     h1 {
       cursor: pointer;
       font-size: 1.3rem;
@@ -62,13 +66,17 @@ export const RightContainer = styled.div`
     }
 
     & + a {
-      margin-left: 1rem;
+      margin-left: 0.5rem;
       background: ${({ theme }) => theme.colors.primary};
 
       &:hover {
         background: ${({ theme }) => darken(0.07, theme.colors.primary)};
       }
     }
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
