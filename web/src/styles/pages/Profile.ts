@@ -12,9 +12,8 @@ export const Container = styled.div`
     max-width: 240px;
 
     padding: 1rem;
-    border-radius: 8px 8px 0 0;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.secondary};
-    background: ${({ theme }) => theme.colors.gray};
+    border-radius: 4px;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
 
     span {
       opacity: 0.6;
