@@ -7,6 +7,11 @@ export const Container = styled.div`
 
   padding: 1rem;
   margin: 0 auto;
+`;
+
+export const Form = styled(Unform)`
+  display: flex;
+  flex-direction: column;
 
   > button {
     width: 50%;
@@ -16,27 +21,22 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled(Unform)`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const InputHeader = styled.div`
   padding: 0 4px;
   flex-direction: column;
   display: flex;
 
-  strong {
-    font-size: 0.8rem;
-
-    & + input {
-      margin-top: 0.5rem;
-    }
+  & + input {
+    margin-bottom: 0.5rem;
   }
 
   span {
     opacity: 0.6;
     margin: 2px 0;
     font-size: 0.6rem;
+  }
+
+  strong {
+    font-size: 0.8rem;
   }
 `;

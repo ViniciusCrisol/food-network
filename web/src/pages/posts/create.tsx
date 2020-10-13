@@ -22,15 +22,16 @@ const CreatePost: React.FC = () => {
           <strong>Title</strong>
           <span>Be specific and imagine you’re talking to another person</span>
         </InputHeader>
-        <Input name="title" placeholder="My cake is so delicious!" />
+        <Input name="title" />
+
         <InputHeader>
           <strong>Body</strong>
           <span>Inclue all the information</span>
         </InputHeader>
-        <Textarea name="title" placeholder="My cake is so delicious!" />
-      </Form>
+        <Textarea name="content" />
 
-      <Button>Create post</Button>
+        <Button>Create post</Button>
+      </Form>
     </Container>
   );
 };
