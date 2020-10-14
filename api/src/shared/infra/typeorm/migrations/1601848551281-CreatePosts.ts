@@ -19,7 +19,7 @@ export default class CreatePosts1601848551281 implements MigrationInterface {
           },
           {
             name: 'content',
-            type: 'varchar',
+            type: 'text',
           },
           {
             name: 'author_id',

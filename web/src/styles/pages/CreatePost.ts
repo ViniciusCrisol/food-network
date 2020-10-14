@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form as Unform } from '@unform/web';
 
 export const Container = styled.div`
@@ -7,15 +7,35 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.gray};
 `;
 
-export const Form = styled(Unform)`
-  max-width: 680px;
+export const Content = styled.div`
+  max-width: 1280px;
   width: 100%;
 
   padding: 1rem;
   margin: 0 auto;
   border-radius: 4px;
-  background: ${({ theme }) => theme.colors.background};
 
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 790px) {
+    flex-direction: column;
+    justify-content: unset;
+  }
+`;
+
+const container = css`
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background: ${({ theme }) => theme.colors.background};
+`;
+
+export const Form = styled(Unform)`
+  ${container}
+
+  width: 100%;
+  padding: 1rem;
+  max-width: 840px;
   font-size: 0.8rem;
 
   display: flex;
@@ -24,20 +44,32 @@ export const Form = styled(Unform)`
   > button {
     width: 50%;
     height: 2rem;
+    margin-left: auto;
   }
 `;
 
-export const InputHeader = styled.div`
-  padding: 0 4px;
-  display: flex;
-  flex-direction: column;
+export const Tips = styled.div`
+  ${container}
+  display:block;
 
-  & + input {
-    margin-bottom: 0.5rem;
+  padding: 0;
+  margin-left: 1rem;
+  height: fit-content;
+
+  header {
+    padding: 0.5rem;
+    color: ${({ theme }) => theme.colors.text}80;
+    background: ${({ theme }) => theme.colors.gray}bb;
   }
 
-  span {
-    opacity: 0.6;
-    margin: 2px 0 4px;
+  p {
+    font-size: 0.8rem;
+    padding: 1rem 0.5rem;
+  }
+
+  @media (max-width: 790px) {
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: unset;
   }
 `;

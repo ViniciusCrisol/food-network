@@ -3,9 +3,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 
+import { useAuth } from '../../hooks/authContext';
+
 import Button from '../../components/Button';
 import Input from '../../components/UnformInput';
-import { useAuth } from '../../hooks/authContext';
 import { Container, Form } from '../../styles/pages/Auth';
 
 const LogIn: React.FC = () => {
@@ -32,10 +33,13 @@ const LogIn: React.FC = () => {
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h2>Log in</h2>
         <Input name="email" placeholder="E-mail" />
+
         <Input name="password" type="password" placeholder="Password" />
+
         <Button loading={loading} type="submit">
           Log in
         </Button>
+
         <Link href="/auth/signup">
           <a>I don't have an account.</a>
         </Link>

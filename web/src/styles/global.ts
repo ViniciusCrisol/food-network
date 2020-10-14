@@ -13,7 +13,7 @@ export default createGlobalStyle`
     font-size: 100%;
 
     @media(max-width: 760px) {
-      font-size: 90%;
+      font-size: 80%;
     }
   }
 

@@ -9,8 +9,5 @@ export const Textarea = styled.textarea`
   border: 2px solid ${({ theme }) => theme.colors.gray};
 
   resize: none;
-
-  & + input {
-    margin-top: 1rem;
-  }
+  white-space: pre;
 `;

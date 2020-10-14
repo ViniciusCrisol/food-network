@@ -38,12 +38,16 @@ class CreatePostService {
       throw new AppError('User does not exists');
     }
 
-    const tagExists = await this.tagsRepository.findByTitle(tag);
+    const tagExists = await this.tagsRepository.findByTitle(
+      tag.toLowerCase().trim(),
+    );
 
     let tag_id = tagExists?.id || '';
 
     if (!tagExists) {
-      const createdTag = await this.tagsRepository.create(tag);
+      const createdTag = await this.tagsRepository.create(
+        tag.toLowerCase().trim(),
+      );
 
       tag_id = createdTag.id;
     }

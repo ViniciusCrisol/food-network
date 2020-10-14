@@ -14,6 +14,7 @@ export const Form = styled(Unform)`
   padding: 2rem;
   margin: 0 auto;
   border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background: ${({ theme }) => theme.colors.background};
 
   display: flex;

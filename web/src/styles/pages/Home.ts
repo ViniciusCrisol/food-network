@@ -89,7 +89,7 @@ export const Card = styled.div`
   padding: 1rem;
   border-radius: 8px;
   margin: 2.5rem auto;
-  box-shadow: rgba(0, 0, 0, 0.32) 0px 2px 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background: ${({ theme }) => theme.colors.background};
 
   display: flex;

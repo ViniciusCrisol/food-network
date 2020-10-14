@@ -81,11 +81,6 @@ export const RightContainer = styled.div`
 `;
 
 export const UserContainer = styled.section`
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-
   a {
     margin-left: 4px;
     text-decoration: underline;

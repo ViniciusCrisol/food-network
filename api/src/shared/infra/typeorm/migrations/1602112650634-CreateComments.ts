@@ -15,7 +15,7 @@ export default class CreateComments1602112650634 implements MigrationInterface {
           },
           {
             name: 'content',
-            type: 'varchar',
+            type: 'text',
           },
           {
             name: 'author_id',

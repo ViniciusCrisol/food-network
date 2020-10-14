@@ -20,7 +20,9 @@ const Navbar: React.FC = () => {
         <RightContainer>
           {user ? (
             <UserContainer>
-              <span>{user.name.split(' ')[0]}</span>
+              <Link href="/profile">
+                <a>{user.name.split(' ')[0]}</a>
+              </Link>
             </UserContainer>
           ) : (
             <>
