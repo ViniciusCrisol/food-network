@@ -24,7 +24,11 @@ class PostsRepository implements IPostsRepository {
   }
 
   public async list(): Promise<Post[]> {
-    const posts = await this.ormRepository.find();
+    const posts = await this.ormRepository.find({
+      skip: 0,
+      take: 30,
+      order: { created_at: 'DESC' },
+    });
 
     return posts;
   }

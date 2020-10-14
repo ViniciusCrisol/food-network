@@ -8,3 +8,11 @@ interface ISignUpData {
   email: string;
   password: string;
 }
+
+interface IPost {
+  id: string;
+  title: string;
+  authorName: string;
+  tagTitle: string;
+  updated_at: string;
+}

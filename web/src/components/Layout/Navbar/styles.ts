@@ -79,11 +79,3 @@ export const RightContainer = styled.div`
     display: none;
   }
 `;
-
-export const UserContainer = styled.section`
-  a {
-    margin-left: 4px;
-    text-decoration: underline;
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;

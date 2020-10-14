@@ -64,11 +64,11 @@ export default class PostsController {
     const posts = await listPosts.execute();
 
     const serializedPosts = posts.map(post => {
-      const { id, title, content, updated_at, author, tag } = post;
+      const { id, title, updated_at, author, tag } = post;
       const authorName = author.name;
       const tagTitle = tag.title;
 
-      return { id, tagTitle, title, authorName, updated_at, content };
+      return { id, tagTitle, title, authorName, updated_at };
     });
 
     return response.json(serializedPosts);

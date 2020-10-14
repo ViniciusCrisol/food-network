@@ -20,7 +20,9 @@ const Home: React.FC = () => {
           community. That way, we will have a tastier world.
         </p>
         <div>
-          <a>See all recipes</a>
+          <Link href="/posts">
+            <a>See all recipes</a>
+          </Link>
           <Link href="/posts/create">
             <a>Create a recipe</a>
           </Link>
