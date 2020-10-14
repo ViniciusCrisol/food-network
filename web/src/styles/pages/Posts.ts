@@ -7,10 +7,9 @@ export const Container = styled.div`
     max-width: 840px;
     height: fit-content;
 
-    margin: 0 auto;
-
     border: 2px solid ${({ theme }) => theme.colors.gray};
     border-top: 0;
     border-bottom: 0;
+    margin: 0 auto;
   }
 `;
