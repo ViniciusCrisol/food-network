@@ -13,7 +13,7 @@ const Post: React.FC<IPostProps> = ({ post }) => (
     <h5>{post.title}</h5>
     <section>
       <span>{post.tagTitle}</span>
-      <strong>{formatDate(post.updated_at)}</strong>
+      <sub>{formatDate(post.updated_at)}</sub>
     </section>
   </Container>
 );

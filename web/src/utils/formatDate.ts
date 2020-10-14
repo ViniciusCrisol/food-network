@@ -1,6 +1,7 @@
-export default (date: string): string => {
-  const splittedDate = date.split('T')[0];
+export default function formatDate(date: string): string {
+  const [splittedDate, splittedHour] = date.split('T');
   const [year, month, day] = splittedDate.split('-');
+  const [hour, minutes] = splittedHour.split(':');
 
-  return `${month}/${day}/${year}`;
-};
+  return `${month}/${day}/${year} - ${hour}:${minutes}`;
+}
