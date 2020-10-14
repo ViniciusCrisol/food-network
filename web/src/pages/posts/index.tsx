@@ -12,8 +12,6 @@ interface IPosts {
 }
 
 const Posts: React.FC<IPosts> = ({ posts }) => {
-  console.log(posts);
-
   return (
     <Container>
       <Head>

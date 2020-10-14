@@ -1,5 +1,7 @@
 import React from 'react';
 
+import formatDate from '../../utils/formatDate';
+
 import { Container } from './styles';
 
 interface IPostProps {
@@ -8,7 +10,11 @@ interface IPostProps {
 
 const Post: React.FC<IPostProps> = ({ post }) => (
   <Container>
-    <h1>{post.title}</h1>
+    <h5>{post.title}</h5>
+    <section>
+      <span>{post.tagTitle}</span>
+      <strong>{formatDate(post.updated_at)}</strong>
+    </section>
   </Container>
 );
 
