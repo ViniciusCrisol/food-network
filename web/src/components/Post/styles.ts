@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.li`
   width: 100%;
@@ -7,6 +8,12 @@ export const Container = styled.li`
   border: 2px solid ${({ theme }) => theme.colors.gray};
   border-right: 0;
   border-left: 0;
+
+  transition: background 200ms;
+
+  &:hover {
+    background: ${darken(0.013, '#fff')};
+  }
 
   h5 {
     font-size: 1rem;
