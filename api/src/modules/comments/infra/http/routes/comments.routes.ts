@@ -9,10 +9,9 @@ const commentsController = new CommentsController();
 commentsRouter.use(ensureAuthenticated);
 
 commentsRouter.post(
-  '/',
+  '/:id',
   celebrate({
     [Segments.BODY]: {
-      post_id: Joi.string().required(),
       content: Joi.string().required(),
     },
   }),

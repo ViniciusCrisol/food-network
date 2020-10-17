@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { FormHandles } from '@unform/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import api from '../../services/api';
 import formatDate from '../../utils/formatDate';
+import { useAuth } from '../../hooks/authContext';
 
-import { Container, Content } from '../../styles/pages/Post';
+import Button from '../../components/Button';
+import InputLabel from '../../components/InputLabel';
+import Textarea from '../../components/UnformTextarea';
+import {
+  Container,
+  Content,
+  Comment,
+  Comments,
+  CreateComment,
+} from '../../styles/pages/Post';
+
+interface IComment {
+  id: string;
+  authorName: string;
+  content: string;
+  updated_at: string;
+}
 
 interface Ipost {
   id: string;
@@ -15,7 +34,7 @@ interface Ipost {
   authorName: string;
   updated_at: string;
   content: string;
-  comments: [];
+  comments: IComment[];
 }
 
 interface IPostProps {
@@ -23,6 +42,29 @@ interface IPostProps {
 }
 
 const Post: React.FC<IPostProps> = ({ post }) => {
+  const formRef = useRef<FormHandles>(null);
+  const router = useRouter();
+  const { user } = useAuth();
+
+  console.log(post);
+
+  const handleCreateComment = useCallback(
+    async ({ content }) => {
+      try {
+        if (!user) router.push('/auth/login');
+
+        if (!content) console.log('Your comment must have a content!');
+
+        const postId = router.asPath.split('posts/')[1];
+
+        await api.post(`/comments/${postId}`, { content });
+      } catch (err) {
+        console.log(err.response.data.message);
+      }
+    },
+    [user, router]
+  );
+
   return (
     <Container>
       <Head>
@@ -50,6 +92,30 @@ const Post: React.FC<IPostProps> = ({ post }) => {
         </div>
 
         <pre>{post.content}</pre>
+
+        <Comments>
+          <h2>{post.comments.length} comments</h2>
+          {post.comments.map(comment => (
+            <Comment key={comment.id}>
+              <div>
+                <span>
+                  Created by <strong>{comment.authorName}</strong>
+                </span>
+                <span>
+                  Last update <strong>{formatDate(comment.updated_at)}</strong>
+                </span>
+              </div>
+              <pre>{comment.content}</pre>
+            </Comment>
+          ))}
+        </Comments>
+
+        <CreateComment ref={formRef} onSubmit={handleCreateComment}>
+          <InputLabel label="Comment content" />
+          <Textarea name="content" />
+
+          <Button>Comment</Button>
+        </CreateComment>
       </Content>
     </Container>
   );
