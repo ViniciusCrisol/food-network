@@ -12,7 +12,7 @@ export const Container = styled.li`
   transition: background 200ms;
 
   &:hover {
-    background: ${darken(0.013, '#fff')};
+    background: ${darken(0.04, '#fff')};
   }
 
   h5 {

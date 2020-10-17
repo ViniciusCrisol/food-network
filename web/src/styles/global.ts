@@ -24,7 +24,7 @@ export default createGlobalStyle`
     min-height: 100vh;
   }
 
-  body, input, button, textarea {
+  body, input, button, textarea, pre {
     font-family: 'Open Sans', sans-serif;
     color: ${({ theme }) => theme.colors.text};
 

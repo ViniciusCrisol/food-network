@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import api from '../../services/api';
+import formatDate from '../../utils/formatDate';
 
-import { Container } from '../../styles/pages/CreatePost';
+import { Container, Content } from '../../styles/pages/Post';
 
 interface Ipost {
   id: string;
@@ -22,29 +23,47 @@ interface IPostProps {
 }
 
 const Post: React.FC<IPostProps> = ({ post }) => {
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <h1>...</h1>;
-  }
-  console.log(post);
-
   return (
     <Container>
       <Head>
-        <title>Posts - Food Network</title>
+        <title>{post.title} - Food Network</title>
       </Head>
 
-      <div>
-        <h1>{post.id}</h1>
-      </div>
+      <Content>
+        <header>
+          <h1>{post.title}</h1>
+
+          <Link href="/posts/create">
+            <a>Create a post</a>
+          </Link>
+        </header>
+        <div className="header-footer">
+          <span>
+            Created by <strong>{post.authorName}</strong>
+          </span>
+          <span>
+            Last update <strong>{formatDate(post.updated_at)}</strong>
+          </span>
+          <span className="tag">
+            <strong>{post.tagTitle}</strong>
+          </span>
+        </div>
+
+        <pre>{post.content}</pre>
+      </Content>
     </Container>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await api.get('/posts');
+
+  const paths = response.data.map((post: Ipost) => ({
+    params: { id: post.id },
+  }));
+
   return {
-    paths: [],
+    paths,
     fallback: true,
   };
 };
