@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -42,14 +42,14 @@ interface IPostProps {
 }
 
 const Post: React.FC<IPostProps> = ({ post }) => {
+  const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
   const router = useRouter();
   const { user } = useAuth();
 
-  console.log(post);
-
   const handleCreateComment = useCallback(
     async ({ content }) => {
+      setLoading(true);
       try {
         if (!user) router.push('/auth/login');
 
@@ -58,7 +58,9 @@ const Post: React.FC<IPostProps> = ({ post }) => {
         const postId = router.asPath.split('posts/')[1];
 
         await api.post(`/comments/${postId}`, { content });
+        router.push('/profile');
       } catch (err) {
+        setLoading(false);
         console.log(err.response.data.message);
       }
     },
@@ -114,7 +116,7 @@ const Post: React.FC<IPostProps> = ({ post }) => {
           <InputLabel label="Comment content" />
           <Textarea name="content" />
 
-          <Button>Comment</Button>
+          <Button loading={loading}>Comment</Button>
         </CreateComment>
       </Content>
     </Container>

@@ -9,10 +9,11 @@ export const Container = styled.li`
   border-right: 0;
   border-left: 0;
 
+  cursor: pointer;
   transition: background 200ms;
 
   &:hover {
-    background: ${darken(0.04, '#fff')};
+    background: ${darken(0.02, '#fff')};
   }
 
   h5 {

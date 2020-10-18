@@ -55,14 +55,17 @@ export const Content = styled.article`
   }
 
   .header-footer {
-    ${status}
+    ${status};
+    padding-top: 1rem;
   }
 
   > pre {
-    margin-top: 2rem;
-    padding: 1rem 4px;
-    border-top: 1px solid ${({ theme }) => theme.colors.gray};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+    font-size: 0.9rem;
+
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    border: 1px solid ${({ theme }) => theme.colors.gray};
   }
 `;
 
@@ -86,7 +89,7 @@ export const Comments = styled.section`
 `;
 
 export const Comment = styled.div`
-  padding: 1rem;
+  padding: 1rem 1rem 2rem;
   border-radius: 4px;
   margin-bottom: 1rem;
   background: rgba(0, 0, 0, 0.02);
@@ -99,6 +102,7 @@ export const Comment = styled.div`
   }
 
   pre {
+    font-size: 0.9rem;
     padding-left: 1rem;
   }
 `;
