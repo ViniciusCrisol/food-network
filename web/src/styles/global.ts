@@ -27,7 +27,6 @@ export default createGlobalStyle`
   body, input, button, textarea, pre {
     font-family: 'Open Sans', sans-serif;
     color: ${({ theme }) => theme.colors.text};
-
     -webkit-font-smoothing: antialiased !important;
   }
 

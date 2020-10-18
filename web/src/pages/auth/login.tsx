@@ -1,6 +1,7 @@
 import React, { useRef, useCallback, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 import { FormHandles } from '@unform/core';
 
 import { useAuth } from '../../hooks/authContext';
@@ -23,9 +24,9 @@ const LogIn: React.FC = () => {
       } catch (err) {
         setLoading(false);
         if (err instanceof Error) {
-          console.log(err);
+          toast.error(err.message);
         } else {
-          console.log(err.response.data.message);
+          toast.error(err.response.data.message);
         }
       }
     },

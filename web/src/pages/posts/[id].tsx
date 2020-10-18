@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { FormHandles } from '@unform/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -66,9 +67,9 @@ const Post: React.FC<IPostProps> = ({ post }) => {
       } catch (err) {
         setLoading(false);
         if (err instanceof Error) {
-          console.log(err);
+          toast.error(err.message);
         } else {
-          console.log(err.response.data.message);
+          toast.error(err.response.data.message);
         }
       }
     },

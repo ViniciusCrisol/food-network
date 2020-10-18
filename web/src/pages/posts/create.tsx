@@ -1,5 +1,6 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import Head from 'next/head';
+import { toast } from 'react-toastify';
 import { FormHandles } from '@unform/core';
 
 import api from '../../services/api';
@@ -22,15 +23,13 @@ const CreatePost: React.FC = () => {
   const handleSubmit = useCallback(async (data: IFormData): Promise<void> => {
     try {
       const { content, tag, title } = data;
-
       if (!content || !tag || !title) throw new Error('Validations fails!');
-
       await api.post('/posts', data);
     } catch (err) {
       if (err instanceof Error) {
-        console.log(err);
+        toast.error(err.message);
       } else {
-        console.log(err.response.data.message);
+        toast.error(err.response.data.message);
       }
     }
   }, []);
