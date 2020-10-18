@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         <RightContainer>
-          {!user ? (
+          {!user && (
             <>
               <Link href="/auth/login">
                 <a>Log in</a>
@@ -28,10 +28,6 @@ const Navbar: React.FC = () => {
                 <a>Sign up</a>
               </Link>
             </>
-          ) : (
-            <Link href="/profile">
-              <a>{user.name.split(' ')[0]}</a>
-            </Link>
           )}
         </RightContainer>
       </div>

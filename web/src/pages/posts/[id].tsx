@@ -58,7 +58,7 @@ const Post: React.FC<IPostProps> = ({ post }) => {
         const postId = router.asPath.split('posts/')[1];
 
         await api.post(`/comments/${postId}`, { content });
-        router.push('/profile');
+        router.push('/posts');
       } catch (err) {
         setLoading(false);
         console.log(err.response.data.message);

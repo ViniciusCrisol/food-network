@@ -58,7 +58,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         api.defaults.headers.authorization = `Bearer ${token}`;
 
         setData({ token, user });
-        router.push('/profile');
+        router.push('/posts');
       } catch (err) {
         throw new Error(err.response.data.message);
       }
@@ -79,7 +79,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         api.defaults.headers.authorization = `Bearer ${token}`;
 
         setData({ token, user });
-        router.push('/profile');
+        router.push('/posts');
       } catch (err) {
         throw new Error(err.response.data.message);
       }
@@ -104,12 +104,8 @@ export const AuthProvider: React.FC = ({ children }) => {
         window.location.href = '/auth/login';
       }
 
-      if (!data && router.pathname === '/profile') {
-        window.location.href = '/auth/login';
-      }
-
       if (data && authPath) {
-        window.location.href = '/profile';
+        window.location.href = '/posts';
       }
     };
 
