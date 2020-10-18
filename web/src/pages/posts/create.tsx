@@ -10,14 +10,28 @@ import Textarea from '../../components/UnformTextarea';
 import InputLabel from '../../components/InputLabel';
 import { Container, Content, Form, Tips } from '../../styles/pages/CreatePost';
 
+interface IFormData {
+  title: string;
+  tag: string;
+  content: string;
+}
+
 const CreatePost: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async data => {
+  const handleSubmit = useCallback(async (data: IFormData): Promise<void> => {
     try {
+      const { content, tag, title } = data;
+
+      if (!content || !tag || !title) throw new Error('Validations fails!');
+
       await api.post('/posts', data);
     } catch (err) {
-      console.log(err.response.data.message);
+      if (err instanceof Error) {
+        console.log(err);
+      } else {
+        console.log(err.response.data.message);
+      }
     }
   }, []);
 

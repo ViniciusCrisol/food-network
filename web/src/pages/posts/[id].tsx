@@ -41,6 +41,10 @@ interface IPostProps {
   post: Ipost;
 }
 
+interface IFormData {
+  content: string;
+}
+
 const Post: React.FC<IPostProps> = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
@@ -48,12 +52,12 @@ const Post: React.FC<IPostProps> = ({ post }) => {
   const { user } = useAuth();
 
   const handleCreateComment = useCallback(
-    async ({ content }) => {
+    async ({ content }: IFormData): Promise<void> => {
       setLoading(true);
       try {
         if (!user) router.push('/auth/login');
 
-        if (!content) console.log('Your comment must have a content!');
+        if (!content) throw new Error('Your comment must have a content!');
 
         const postId = router.asPath.split('posts/')[1];
 
@@ -61,7 +65,11 @@ const Post: React.FC<IPostProps> = ({ post }) => {
         router.push('/posts');
       } catch (err) {
         setLoading(false);
-        console.log(err.response.data.message);
+        if (err instanceof Error) {
+          console.log(err);
+        } else {
+          console.log(err.response.data.message);
+        }
       }
     },
     [user, router]

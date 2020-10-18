@@ -15,13 +15,18 @@ const SignUp: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
-    async ({ email, name, password }: ISignUpData) => {
+    async ({ email, name, password }: ISignUpData): Promise<void> => {
       setLoading(true);
       try {
+        if (!email || !name || !password) throw new Error('Validation fails.');
         await signUp({ email, name, password });
       } catch (err) {
-        console.log(err);
         setLoading(false);
+        if (err instanceof Error) {
+          console.log(err);
+        } else {
+          console.log(err.response.data.message);
+        }
       }
     },
     []

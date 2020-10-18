@@ -50,7 +50,9 @@ const Home: React.FC = () => {
             </Link>
             for an account.
           </p>
-          <a>Browse recipes</a>
+          <Link href="/posts">
+            <a>Browse recipes</a>
+          </Link>
         </Card>
       </Content>
     </Container>

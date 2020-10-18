@@ -14,15 +14,23 @@ const LogIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(async ({ email, password }: ISignInData) => {
-    setLoading(true);
-    try {
-      await signIn({ email, password });
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
-  }, []);
+  const handleSubmit = useCallback(
+    async ({ email, password }: ISignInData): Promise<void> => {
+      setLoading(true);
+      try {
+        if (!email || !password) throw new Error('Validation fails.');
+        await signIn({ email, password });
+      } catch (err) {
+        setLoading(false);
+        if (err instanceof Error) {
+          console.log(err);
+        } else {
+          console.log(err.response.data.message);
+        }
+      }
+    },
+    []
+  );
 
   return (
     <Container>
