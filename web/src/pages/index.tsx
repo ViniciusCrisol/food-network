@@ -2,9 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
+import { useAuth } from '../hooks/authContext';
 import { Container, Bannner, Content, Card } from '../styles/pages/Home';
 
 const Home: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <Container>
       <Head>
@@ -23,7 +26,7 @@ const Home: React.FC = () => {
           <Link href="/posts">
             <a>See all recipes</a>
           </Link>
-          <Link href="/posts/create">
+          <Link href={user ? '/posts/create' : '/auth/login'}>
             <a>Create a recipe</a>
           </Link>
         </div>

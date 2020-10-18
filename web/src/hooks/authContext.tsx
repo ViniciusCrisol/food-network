@@ -96,15 +96,19 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const handleRouteChange = () => {
-      const isAuthenticated =
+      const authPath =
         router.pathname === '/auth/login' ||
         router.pathname === '/auth/register';
+
+      if (!data && router.pathname == '/posts/create') {
+        window.location.href = '/auth/login';
+      }
 
       if (!data && router.pathname === '/profile') {
         window.location.href = '/auth/login';
       }
 
-      if (data && isAuthenticated) {
+      if (data && authPath) {
         window.location.href = '/profile';
       }
     };

@@ -74,26 +74,28 @@ const Post: React.FC<IPostProps> = ({ post }) => {
       </Head>
 
       <Content>
-        <header>
-          <h1>{post.title}</h1>
+        <div className="comment">
+          <header>
+            <h1>{post.title}</h1>
 
-          <Link href="/posts/create">
-            <a>Create a post</a>
-          </Link>
-        </header>
-        <div className="header-footer">
-          <span>
-            Created by <strong>{post.authorName}</strong>
-          </span>
-          <span>
-            Last update <strong>{formatDate(post.updated_at)}</strong>
-          </span>
-          <span className="tag">
-            <strong>{post.tagTitle}</strong>
-          </span>
+            <Link href={user ? '/posts/create' : '/auth/login'}>
+              <a>Create a post</a>
+            </Link>
+          </header>
+          <div className="header-footer">
+            <span>
+              Created by <strong>{post.authorName}</strong>
+            </span>
+            <span>
+              Last update <strong>{formatDate(post.updated_at)}</strong>
+            </span>
+            <span className="tag">
+              <strong>{post.tagTitle}</strong>
+            </span>
+          </div>
+
+          <pre>{post.content}</pre>
         </div>
-
-        <pre>{post.content}</pre>
 
         <Comments>
           <h2>{post.comments.length} comments</h2>
