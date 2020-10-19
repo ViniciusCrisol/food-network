@@ -5,10 +5,6 @@ Developed with TypeScript, NextJs & Node. <br />
 
 ---
 
-<p align="center"><img src="https://res.cloudinary.com/dfhay5bfg/image/upload/v1601513911/Github/password-drive.png"/></p>
-
----
-
 ## :pushpin: Contents
 
 * Techs
