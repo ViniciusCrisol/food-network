@@ -34,7 +34,7 @@ Developed with TypeScript, NextJs & Node. <br />
 ## :closed_book: License
 
 Released in 2020.
-This project is under the [MIT license](https://github.com/ViniciusCrisol/password-drive/blob/master/LICENSE).
+This project is under the [MIT license](https://github.com/ViniciusCrisol/food-network/blob/master/LICENSE).
 
 ---
 
