@@ -1,4 +1,4 @@
-# Food Network
+# 🍔 Food Network
 
 O projeto consiste em um sistema de compartilhamento de receitas. Basicamente me inspirei completamente no StackOverflow e decidi criar um fórum sobre receitas.
 
